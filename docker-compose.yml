@@ -5,6 +5,7 @@ services:
     image: metabase/metabase:latest
     depends_on:
       - traefik
+      - postgres
     restart: always
     ports:
       - 3000:3000
@@ -17,6 +18,14 @@ services:
       - 'traefik.http.routers.redirs.rule=hostregexp(`{host:.+}`)'
       - 'traefik.http.routers.redirs.entrypoints=web'
       - 'traefik.http.routers.redirs.middlewares=redirect-to-https'
+
+    environment:
+      - MB_DB_TYPE=postgres
+      - MB_DB_DBNAME=metabase
+      - MB_DB_PORT=5432
+      - MB_DB_USER=metabase
+      - MB_DB_PASS=metabase_password
+      - MB_DB_HOST=postgres
 
   
   traefik:
@@ -42,3 +51,11 @@ services:
     volumes:
       - './letsencrypt:/letsencrypt'
       - '/var/run/docker.sock:/var/run/docker.sock:ro'
+
+
+  postgres:
+    image: postgres:latest
+    environment:
+      - POSTGRES_DB=metabase
+      - POSTGRES_USER=metabase
+      - POSTGRES_PASSWORD=metabase_password
