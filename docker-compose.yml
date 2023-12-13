@@ -32,7 +32,7 @@ services:
       - '--providers.docker.exposedbydefault=false'
       - '--certificatesresolvers.myresolver.acme.httpchallenge=true'
       - '--certificatesresolvers.myresolver.acme.httpchallenge.entrypoint=web'
-      - '--certificatesresolvers.myresolver.acme.email=eddy@bitnob.com'
+      - '--certificatesresolvers.myresolver.acme.email=nonso@bitnob.com'
       - '--certificatesresolvers.myresolver.acme.storage=/letsencrypt/acme.json'
     ports:
       - '443:443'
