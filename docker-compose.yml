@@ -54,7 +54,7 @@ services:
 
 
   postgres:
-    image: postgres:latest
+    image: postgres
     environment:
       - POSTGRES_DB=metabase
       - POSTGRES_USER=metabase
