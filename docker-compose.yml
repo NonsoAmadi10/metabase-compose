@@ -5,7 +5,7 @@ services:
     image: metabase/metabase:latest
     depends_on:
       - traefik
-      - postgres
+      - db
     restart: always
     ports:
       - 3000:3000
